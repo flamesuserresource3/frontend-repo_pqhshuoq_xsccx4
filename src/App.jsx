@@ -1,28 +1,32 @@
-import { useState } from 'react'
+import React from 'react';
+import BackgroundTextureLayer from './components/BackgroundTextureLayer';
+import DecorativeStrokesLayer from './components/DecorativeStrokesLayer';
+import ProfileCard from './components/ProfileCard';
+import SkillBadges from './components/SkillBadges';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 text-gray-900 antialiased">
+      {/* Profile Section */}
+      <section
+        id="profile"
+        className="relative mx-auto flex min-h-[70vh] max-w-6xl flex-col items-center justify-center px-6 py-16"
+      >
+        {/* Background + decorative layers (exportable as separate layers) */}
+        <BackgroundTextureLayer />
+        <DecorativeStrokesLayer />
 
-export default App
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-4xl">
+          <ProfileCard />
+          <SkillBadges />
+
+          {/* Subtle bottom divider to blend with mountain hero above */}
+          <div className="mx-auto mt-10 flex w-4/5 items-center justify-center opacity-70">
+            <span className="inline-block h-px w-full bg-gradient-to-r from-transparent via-black/30 to-transparent" />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
